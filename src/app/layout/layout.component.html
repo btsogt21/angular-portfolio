@@ -1,0 +1,20 @@
+<div class="container">
+    <button class = "toggle-sidebar-btn" (click)= "toggleSidebar()">
+        Toggle Sidebar
+    </button>
+    <nav class="sidebar" [ngClass]="{ 'collapsed': isCollapsed}">
+        <ul>
+        Sidebar content
+            <li><a routerLink="/">Home</a></li>
+            <li><a routerLink="/about">About</a></li>
+            <li><a routerLink="/projects">Projects</a></li>
+            <li><a routerLink="/contact">Contact</a></li>
+        </ul>
+    </nav>
+    <main class="main-content">
+    <!-- Main content area for individual page content -->
+        <ng-content>
+
+        </ng-content>
+    </main>
+</div>
