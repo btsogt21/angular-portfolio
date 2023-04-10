@@ -2,13 +2,21 @@
     <button class = "toggle-sidebar-btn" (click)= "toggleSidebar()">
         Toggle Sidebar
     </button>
-    <nav class="sidebar" [ngClass]="{ 'collapsed': isCollapsed}">
+    <button class = "toggle-dark-mode-btn" (click)="toggleDarkMode()">
+        Toggle Dark Mode
+    </button>"
+    <nav class="sidebar" [ngClass]="{ 'collapsed': isCollapsed, 'dark-mode': isDarkMode }">
         <ul>
-        Sidebar content
-            <li><a routerLink="/">Home</a></li>
-            <li><a routerLink="/about">About</a></li>
-            <li><a routerLink="/projects">Projects</a></li>
-            <li><a routerLink="/contact">Contact</a></li>
+            <!-- Sidebar Content -->
+            <li><a routerLink="/">home</a></li>
+            <li><a routerLink="/about">about</a></li>
+            <li><a routerLink="/projects">projects</a></li>
+            <li><a routerLink="/contact">contact</a></li>
+            <li class = "theme-toggle">
+                <a (click)="toggleDarkMode()">
+                    <fa-icon [icon]="isDarkMode ? mySun : myMoon"></fa-icon>
+                </a>
+            </li>
         </ul>
     </nav>
     <main class="main-content">
