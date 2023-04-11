@@ -1,11 +1,14 @@
 <div class="container">
-    <button class = "toggle-sidebar-btn" (click)= "toggleSidebar()">
+    <!-- <button class = "toggle-sidebar-btn" (click)= "toggleSidebar()">
         Toggle Sidebar
-    </button>
-    <button class = "toggle-dark-mode-btn" (click)="toggleDarkMode()">
+    </button> -->
+    <!-- <button class = "toggle-dark-mode-btn" (click)="toggleDarkMode()">
         Toggle Dark Mode
-    </button>"
-    <nav class="sidebar" [ngClass]="{ 'collapsed': isCollapsed, 'dark-mode': isDarkMode }">
+    </button> -->
+    <div class = "arrow-container" [ngClass]="{ 'dark-mode': isDarkMode }" (mouseenter)="openSidebar()" (mouseleave)="closeSidebar()">
+        <fa-icon [icon]="isCollapsed ? myChevronRight : myChevronLeft" class="arrow-icon"></fa-icon>
+    </div>
+    <nav class="sidebar" [ngClass]="{ 'collapsed': isCollapsed, 'dark-mode': isDarkMode }" (mouseover)="openSidebar()" (mouseout)="closeSidebar()">
         <ul>
             <!-- Sidebar Content -->
             <li><a routerLink="/">home</a></li>
@@ -18,7 +21,9 @@
                 </a>
             </li>
         </ul>
+
     </nav>
+    <img src="https://64.media.tumblr.com/54928977237de2e17a476c9043a45c23/tumblr_napkh7KRLF1ro0n55o1_500.gif" alt="Zaheer" class="zaheer-gif">
     <main class="main-content">
     <!-- Main content area for individual page content -->
         <ng-content>
