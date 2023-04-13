@@ -5,6 +5,13 @@
     <!-- <button class = "toggle-dark-mode-btn" (click)="toggleDarkMode()">
         Toggle Dark Mode
     </button> -->
+    <div class = "wind-container" #windContainer>
+        <svg class="wind-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 14s4-1.5 7-1.5 7 1.5 10 1.5 5-1.5 5-1.5"/>
+            <path d="M1 10s4-1.5 7-1.5 7 1.5 10 1.5 5-1.5 5-1.5"/>
+            <path d="M1 6s4-1.5 7-1.5 7 1.5 10 1.5 5-1.5 5-1.5"/>
+        </svg>
+    </div>
     <div class = "arrow-container" [ngClass]="{ 'dark-mode': isDarkMode }" (mouseenter)="openSidebar()" (mouseleave)="closeSidebar()">
         <fa-icon [icon]="isCollapsed ? myChevronRight : myChevronLeft" class="arrow-icon"></fa-icon>
     </div>
@@ -25,8 +32,9 @@
     <main class="main-content">
     <!-- Main content area for individual page content -->
         <ng-content>
-
         </ng-content>
-        <img src="https://64.media.tumblr.com/54928977237de2e17a476c9043a45c23/tumblr_napkh7KRLF1ro0n55o1_500.gif" class="zaheer-gif">
     </main>
+</div>
+<div class = "zaheer-wrapper">
+    <img src="https://64.media.tumblr.com/54928977237de2e17a476c9043a45c23/tumblr_napkh7KRLF1ro0n55o1_500.gif" class="zaheer-gif">
 </div>
