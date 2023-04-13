@@ -9,7 +9,7 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent {
-  isCollapsed = false;
+  isCollapsed = true;
   isDarkMode = false;
   openSidebar(){
     this.isCollapsed = false;
