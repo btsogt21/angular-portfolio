@@ -12,10 +12,10 @@
             <path d="M1 6s4-1.5 7-1.5 7 1.5 10 1.5 5-1.5 5-1.5"/>
         </svg>
     </div>
-    <div class = "arrow-container" [ngClass]="{ 'dark-mode': isDarkMode }" (mouseenter)="openSidebar()" (mouseleave)="closeSidebar()">
+    <div class = "arrow-container" [ngClass]="{ 'dark-mode': isDark }" (mouseenter)="openSidebar()" (mouseleave)="closeSidebar()">
         <fa-icon [icon]="isCollapsed ? myChevronRight : myChevronLeft" class="arrow-icon"></fa-icon>
     </div>
-    <nav class="sidebar" [ngClass]="{ 'collapsed': isCollapsed, 'dark-mode': isDarkMode }" (mouseover)="openSidebar()" (mouseout)="closeSidebar()">
+    <nav class="sidebar" [ngClass]="{ 'collapsed': isCollapsed, 'dark-mode': isDark }" (mouseover)="openSidebar()" (mouseout)="closeSidebar()">
         <ul>
             <!-- Sidebar Content -->
             <li><a routerLink="/">home</a></li>
@@ -24,7 +24,7 @@
             <li><a routerLink="/contact">contact</a></li>
             <li class = "theme-toggle">
                 <a (click)="toggleDarkMode()">
-                    <fa-icon [icon]="isDarkMode ? mySun : myMoon"></fa-icon>
+                    <fa-icon [icon]="isDark ? mySun : myMoon"></fa-icon>
                 </a>
             </li>
         </ul>
