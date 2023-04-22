@@ -22,14 +22,14 @@ export class LayoutComponent implements OnInit, OnDestroy {
     });
   }
   isCollapsed = false;
-  openSidebar(){
-    this.isCollapsed = false;
-    this.showWindEffect(true);
-  }
-  closeSidebar(){
-    this.isCollapsed = true;
-    this.showWindEffect(false);
-  }
+  // openSidebar(){
+  //   this.isCollapsed = false;
+  //   this.showWindEffect(true);
+  // }
+  // closeSidebar(){
+  //   this.isCollapsed = true;
+  //   this.showWindEffect(false);
+  // }
   toggleDarkMode(): void{
     this.themeService.toggleDarkMode();
   }
@@ -38,9 +38,10 @@ export class LayoutComponent implements OnInit, OnDestroy {
     this.darkModeSubscription.unsubscribe();
   }
 
-  // toggleSidebar(){
-  //   this.isCollapsed = !this.isCollapsed;
-  // }
+  toggleSidebar(){
+    this.isCollapsed = !this.isCollapsed;
+    this.showWindEffect(this.isCollapsed);
+  }
   // toggleDarkMode(){
   //   this.isDarkMode = !this.isDarkMode;
   // }
