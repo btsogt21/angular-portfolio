@@ -17,9 +17,6 @@ export class LayoutComponent implements OnInit, OnDestroy {
     this.darkModeSubscription = this.themeService.isDarkMode$.subscribe(isDarkMode => {
       this.isDark = isDarkMode;
     });
-    this.themeService.isDarkMode$.subscribe(isDarkMode => {
-      this.isDark = isDarkMode;
-    });
   }
   isCollapsed = false;
   // openSidebar(){

@@ -10,9 +10,10 @@ export class ThemeService {
   constructor() { }
   toggleDarkMode(): void {
     this.isDarkModeSubject.next(!this.isDarkModeSubject.value);
+    console.log(this.isDarkModeSubject.value);
   }
-  setDarkMode(isDarkMode: boolean): void {
-    this.isDarkModeSubject.next(isDarkMode);
+  setDarkMode(isDarkMode$: boolean): void {
+    this.isDarkModeSubject.next(isDarkMode$);
   }
   getDarkMode(): boolean {
     return this.isDarkModeSubject.value;

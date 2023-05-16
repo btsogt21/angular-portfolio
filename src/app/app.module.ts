@@ -11,6 +11,7 @@ import { ContactComponent } from './contact/contact.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import { ZaheerGifComponent } from './zaheer-gif/zaheer-gif.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
     HomeComponent,
     AboutComponent,
     ProjectsComponent,
-    ContactComponent
+    ContactComponent,
+    ZaheerGifComponent
   ],
   imports: [
     BrowserModule,
