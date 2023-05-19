@@ -6,6 +6,7 @@
   font-weight: 349;
 }
 .container {
+  width:80%;
   margin:0 auto;
   // margin-top:-21px;
   h1{
@@ -14,4 +15,8 @@
       margin: 0 auto;
     }
   }
+}
+
+.bio{
+  text-align:justify;
 }
