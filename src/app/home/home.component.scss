@@ -9,13 +9,35 @@
   width:80%;
   margin:0 auto;
   // margin-top:-21px;
+  // the following is to ensure there are no margins between the h1, the .title, and the .container
   h1{
     margin:0 auto;
     .title{
       margin: 0 auto;
     }
   }
+  // @media (min-width:1200px){
+  //   transform:scale(1);
+  // }
+  // @media (max-width:600px){
+  //   transform:scale(0.8);
+  // }
 }
+
+.profile-bio {
+  display:flex;
+  justify-content: space-between;
+  align-items:flex-start;
+}
+
+.profile {
+  flex: 0 0 auto;
+  margin-right: 20px;
+  img{
+    border-radius: 3%;
+  }
+}
+
 
 .bio{
   text-align:justify;
