@@ -10,17 +10,20 @@
     // flex-direction: row; //ommitted due to redundancy, row direction is default;
     justify-content: center;
     align-items: center;
-    width:80%;
+    width:995px;
     transition: opacity 0.5s ease-in-out, background-color 0.5s ease, color 0.5s ease;
     background-color:#f5f5f5;
+    max-width: 995px;
+    // margin-right:20px;
+    // margin-left:20px;
 }
 
 .toggle-sidebar-btn {
 }
   
 .sidebar {
-    position:relative;
-    left: 1.2rem;
+    // position:relative;
+    // left: 1.2rem;
     width: calc(100% - 2.4rem); //making sure the sidebar doesn't overlap the toggle button, toggle button width is 2.4
     height: 60px;
     transition: width 0.3s ease-in-out, opacity 0.5s ease-in-out, background-color 0.5s ease, color 0.5s ease;
@@ -71,7 +74,7 @@
 }
 
 .arrow-container{
-    position: absolute;
+    // position: absolute; //omitted to maintian better responsivity + easier implementation of arrow's open position.
     background-color:#f5f5f5;
     left: 10%; // Adjust this value to position the arrow icon on the left edge of the page
     height: 60px;
@@ -80,7 +83,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index:1;
+    // z-index:1;
     cursor:pointer;
 }
 .arrow-icon{
