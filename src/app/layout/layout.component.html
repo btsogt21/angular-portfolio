@@ -1,12 +1,12 @@
 <div class = "outer-container" [ngClass]="{ 'dark-mode': isDark}">
     <div class="container" [ngClass]="{ 'dark-mode': isDark }">
-        <div class = "wind-container" #windContainer>
+        <!-- <div class = "wind-container" #windContainer>
             <svg class="wind-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M1 14s4-1.5 7-1.5 7 1.5 10 1.5 5-1.5 5-1.5"/>
                 <path d="M1 10s4-1.5 7-1.5 7 1.5 10 1.5 5-1.5 5-1.5"/>
                 <path d="M1 6s4-1.5 7-1.5 7 1.5 10 1.5 5-1.5 5-1.5"/>
             </svg>
-        </div>
+        </div> -->
         <div class = "arrow-container" [ngClass]="{ 'dark-mode': isDark }" (click)="toggleSidebar()">
             <fa-icon [icon]="isCollapsed ? myChevronRight : myChevronLeft" class="arrow-icon"></fa-icon>
         </div>
@@ -27,10 +27,10 @@
                 <!-- <li></li> -->
             </ul>
         </nav>
-        <main class="main-content">
-        <!-- Main content area for individual page content -->
+        <!-- <main class="main-content">
+        Main content area for individual page content
             <ng-content>
             </ng-content>
-        </main>
+        </main> -->
     </div>
 </div>

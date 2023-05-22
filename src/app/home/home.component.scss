@@ -1,19 +1,32 @@
 :host {
-  display: block;
+  // display: block; //redundat as it is the default value;
   background-color: #f5f5f5;
   color: #333;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 349;
 }
 .container {
-  max-width:995px;
-  margin:0 auto;
+  max-width:850px;
+  margin: 0 auto;
+  // margin-top: 0 auto;
+  // margin-left: 0 auto;
+  // margin-bottom: 0 auto;
+  // margin-right: 0 auto;
   // margin-top:-21px;
-  // the following is to ensure there are no margins between the h1, the .title, and the .container
-  h1{
-    margin:0 auto;
-    .title{
+  .header{
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom:20px;
+    margin-top:20px;
+    h1{
       margin: 0 auto;
+      #title{
+        margin: 0 auto;
+      }
+    }
+    #roles{
+      margin-top: 10px;
+      margin-bottom:0px;
     }
   }
   // @media (min-width:1200px){
@@ -28,17 +41,22 @@
   display:flex;
   justify-content: space-between;
   align-items:flex-start;
-}
-
-.profile {
-  flex: 0 0 auto;
   margin-right: 20px;
-  img{
-    border-radius: 3%;
+  margin-left: 20px;
+  .profile {
+    // flex: 0 0 auto;
+    margin-right: 20px;
+    img{
+      border-radius: 3%;
+      // max-width:80%;
+      // height:auto;
+    }
+  }
+  .bio{
+    text-align:justify;
+    #p1{
+      margin-top: 0px;
+    }
   }
 }
 
-
-.bio{
-  text-align:justify;
-}
