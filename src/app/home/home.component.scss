@@ -38,25 +38,27 @@
 }
 
 .profile-bio {
-  display:flex;
-  justify-content: space-between;
-  align-items:flex-start;
+  // display:flex;
+  // justify-content: space-between;
+  // align-items:flex-start;
   margin-right: 20px;
   margin-left: 20px;
   .profile {
     // flex: 0 0 auto;
-    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    float:right;
     img{
       border-radius: 3%;
-      // max-width:80%;
+      // max-width: 80%;
       // height:auto;
     }
   }
   .bio{
     text-align:justify;
+    overflow-wrap: break-word;
     #p1{
       margin-top: 0px;
     }
   }
 }
-
