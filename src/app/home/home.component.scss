@@ -45,12 +45,14 @@
   margin-left: 20px;
   .profile {
     // flex: 0 0 auto;
-    margin-left: 20px;
+    // margin-left: 20px;
     margin-bottom: 5px;
+    width:100%;
     float:right;
     img{
       border-radius: 3%;
       // max-width: 80%;
+      width:100%;
       // height:auto;
     }
   }
@@ -62,3 +64,9 @@
     }
   }
 }
+
+// .clearfix::after {
+//   content: "";
+//   display: table;
+//   clear: both;
+// }
