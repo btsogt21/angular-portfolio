@@ -41,6 +41,12 @@
         width: 0;
         opacity: 0;
     }
+    &.expand-downwards{
+        flex-direction: column;
+        position: absolute;
+        width: auto;
+        height:auto;
+    }
 }
 
 .sidebar ul {

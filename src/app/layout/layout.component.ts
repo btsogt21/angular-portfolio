@@ -19,6 +19,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     });
   }
   isCollapsed = false;
+  expandDownwards = false;
   // openSidebar(){
   //   this.isCollapsed = false;
   //   this.showWindEffect(true);
@@ -38,6 +39,14 @@ export class LayoutComponent implements OnInit, OnDestroy {
   }
 
   toggleSidebar(){
+    let outerContainerElement = document.querySelector('.outer-container');
+    let outerContainerWidth = outerContainerElement ? outerContainerElement.getBoundingClientRect().width : 0;
+    // if (this.isCollapsed && outerContainerWidth <=444){
+    //   this.expandDownwards = true;
+    // }
+    // else{
+    //   this.expandDownwards = false;
+    // }
     this.isCollapsed = !this.isCollapsed;
     // this.showWindEffect(this.isCollapsed);
   }
@@ -52,7 +61,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
   // }
 
   // 2023-05-31, 2:18 PM EST: 
-  // this function was directly editing the DOM in order to try and collapse the sidebar after the arrow-container
+  // this function was directly referencing the DOM in order to try and collapse the sidebar after the arrow-container
   // began to clip outside of the page. This might not be best practice, and it also made it difficult to ellegantly
   // implement the reopening functionality while still maintaning the closing functioality.
   // Had to end up going with a rather brutish method of just checking whether the outercontainer width had reached 
@@ -72,8 +81,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
       console.log(outerContainerWidth);
       if (arrowContainerOffset <0 && !this.isCollapsed) {
         this.isCollapsed = true;
-      } else if (this.isCollapsed && outerContainerWidth > 444) {
-        this.isCollapsed = false;
+        // this.expandDownwards = false;
       }
     }
   }
