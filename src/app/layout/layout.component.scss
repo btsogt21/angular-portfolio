@@ -11,7 +11,8 @@
     justify-content: center;
     align-items: center;
     width: 810px;
-    transition: opacity 0.5s ease-in-out, background-color 0.5s ease, color 0.5s ease;
+    // transition: opacity 0.5s ease-in-out, background-color 0.5s ease, color 0.5s ease; // ommitted due to redundancy, nothing else is altering the opacity,
+    // background-color, or color of the container. 
     background-color:#f5f5f5;
     max-width: 810px;
     padding-right:20px;
@@ -22,11 +23,41 @@
 
 .toggle-sidebar-btn {
 }
-  
+
+// June 15th, 4:20 PM EST: The following .sidebar styling is for when we want the sidebar to start open
+// .sidebar {
+//     // position:relative;
+//     // left: 1.2rem;
+//     width: calc(100% - 2.4rem); //making sure the sidebar doesn't overlap the toggle button, toggle button width is 2.4
+//     height: 60px;
+//     transition: width 0.3s ease-in-out, opacity 0.5s ease-in-out, background-color 0.5s ease, color 0.5s ease;
+//     display:flex;
+//     justify-content: flex-end;
+//     align-items: center;
+//     font-family: "Source Sans Pro", sans-serif;
+//     font-weight: 349;
+//     overflow:hidden;
+//     background-color:#f5f5f5;
+//     // margin-right:10px;
+//     &.collapsed {
+//         width: 0;
+//         opacity: 0;
+//     }
+//     // &.expand-downwards{
+//     //     flex-direction: column;
+//     //     position: absolute;
+//     //     width: auto;
+//     //     height:auto;
+//     //     top: 0;
+//     //     left: 0;
+//     //     z-index:10;
+//     // }
+// }
+
+// June 15th, 4:20 PM EST: The following .sidebar styling is for when we want the sidebar to start closed
 .sidebar {
-    // position:relative;
-    // left: 1.2rem;
-    width: calc(100% - 2.4rem); //making sure the sidebar doesn't overlap the toggle button, toggle button width is 2.4
+    width: 0;
+    opacity: 0;
     height: 60px;
     transition: width 0.3s ease-in-out, opacity 0.5s ease-in-out, background-color 0.5s ease, color 0.5s ease;
     display:flex;
@@ -36,17 +67,19 @@
     font-weight: 349;
     overflow:hidden;
     background-color:#f5f5f5;
-    // margin-right:10px;
     &.collapsed {
-        width: 0;
-        opacity: 0;
+        width: calc(100% - 2.4rem); //making sure the sidebar doesn't overlap the toggle button, toggle button width is 2.4
+        opacity: 1;
     }
-    &.expand-downwards{
-        flex-direction: column;
-        position: absolute;
-        width: auto;
-        height:auto;
-    }
+    // &.expand-downwards{
+    //     flex-direction: column;
+    //     position: absolute;
+    //     width: auto;
+    //     height:auto;
+    //     top: 0;
+    //     left: 0;
+    //     z-index:10;
+    // }
 }
 
 .sidebar ul {
@@ -91,9 +124,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    // z-index:1;
+    z-index:1;
     cursor:pointer;
     // margin-left:10px;
+    // @media(max-width:444px){
+    //     opacity: 1;
+    // }
 }
 .arrow-icon{
     // transition: color 0.5s ease;

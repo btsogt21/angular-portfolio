@@ -10,7 +10,7 @@
         <div class = "arrow-container" [ngClass]="{ 'dark-mode': isDark }" (click)="toggleSidebar()">
             <fa-icon [icon]="isCollapsed ? myChevronRight : myChevronLeft" class="arrow-icon"></fa-icon>
         </div>
-        <nav class="sidebar" [ngClass]="{ 'collapsed': isCollapsed, 'dark-mode': isDark, 'expand-downwards': expandDownwards}">
+        <nav class="sidebar" [ngClass]="{ 'collapsed': isCollapsed, 'dark-mode': isDark}">
             <ul>
                 <!-- Sidebar Content -->
                 <li><a routerLink="/">home</a></li>

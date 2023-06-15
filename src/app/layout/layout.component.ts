@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit, OnDestroy {
+  isCollapsed = false;
   isDark = false;
   private darkModeSubscription: Subscription;
   constructor(private themeService: ThemeService) { 
@@ -18,8 +19,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
       this.isDark = isDarkMode;
     });
   }
-  isCollapsed = false;
-  expandDownwards = false;
+  // expandDownwards = false;
   // openSidebar(){
   //   this.isCollapsed = false;
   //   this.showWindEffect(true);
@@ -47,6 +47,12 @@ export class LayoutComponent implements OnInit, OnDestroy {
     // else{
     //   this.expandDownwards = false;
     // }
+    // if (outerContainerWidth <=444){
+    //   this.expandDownwards = true;
+    // }
+    // else{
+    //   this.expandDownwards = false;
+    // }
     this.isCollapsed = !this.isCollapsed;
     // this.showWindEffect(this.isCollapsed);
   }
@@ -69,6 +75,9 @@ export class LayoutComponent implements OnInit, OnDestroy {
   // Might comment this function out at some point in order to replace it with Media queries that follow a strict
   // screen width regime for the sidebar. This would help avoid the issue of the sidebar opening itself up when the
   // screen width is above 444 despite the user wanting to keep it closed.
+
+  // 2023-06-14, 3:09 PM EST:
+  // Update: I have removed the auto open functionality from the below. Seems rather redundant in hindsight.
   @HostListener('window:resize')
   onResize(event?: Event) {
     let arrowContainerElement = document.querySelector('.arrow-container');
@@ -79,8 +88,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
       console.log(arrowContainerOffset);
       let outerContainerWidth = outerContainerElement.getBoundingClientRect().width;
       console.log(outerContainerWidth);
-      if (arrowContainerOffset <0 && !this.isCollapsed) {
-        this.isCollapsed = true;
+      if (arrowContainerOffset <0 && this.isCollapsed) {
+        this.isCollapsed = false;
         // this.expandDownwards = false;
       }
     }
