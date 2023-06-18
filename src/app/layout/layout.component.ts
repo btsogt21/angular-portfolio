@@ -13,13 +13,15 @@ import { Subscription } from 'rxjs';
 export class LayoutComponent implements OnInit, OnDestroy {
   isCollapsed = false;
   isDark = false;
+  isExpandDownwards = false;
+  lastResizeWidth = 0;
+  expandDownwardsWrapper = false;
   private darkModeSubscription: Subscription;
   constructor(private themeService: ThemeService) { 
     this.darkModeSubscription = this.themeService.isDarkMode$.subscribe(isDarkMode => {
       this.isDark = isDarkMode;
     });
   }
-  // expandDownwards = false;
   // openSidebar(){
   //   this.isCollapsed = false;
   //   this.showWindEffect(true);
@@ -41,19 +43,20 @@ export class LayoutComponent implements OnInit, OnDestroy {
   toggleSidebar(){
     let outerContainerElement = document.querySelector('.outer-container');
     let outerContainerWidth = outerContainerElement ? outerContainerElement.getBoundingClientRect().width : 0;
-    // if (this.isCollapsed && outerContainerWidth <=444){
-    //   this.expandDownwards = true;
-    // }
-    // else{
-    //   this.expandDownwards = false;
-    // }
-    // if (outerContainerWidth <=444){
-    //   this.expandDownwards = true;
-    // }
-    // else{
-    //   this.expandDownwards = false;
-    // }
-    this.isCollapsed = !this.isCollapsed;
+    if (!this.isCollapsed && outerContainerWidth <= 444){
+      this.isExpandDownwards = true;
+    }
+    else if (outerContainerWidth<=444 && this.isExpandDownwards){
+      this.isExpandDownwards = false;
+    }
+    else if (!this.isCollapsed && outerContainerWidth > 444){
+      this.isExpandDownwards = false; // experiment with what happens when getting rid of this line (can the expandDownwards state be remembered as true safely?)
+      this.isCollapsed = true;
+    }
+    else if (outerContainerWidth>444 && this.isCollapsed){
+      this.isCollapsed = false;
+    }
+    // this.isCollapsed = !this.isCollapsed;
     // this.showWindEffect(this.isCollapsed);
   }
   // toggleDarkMode(){
@@ -80,18 +83,20 @@ export class LayoutComponent implements OnInit, OnDestroy {
   // Update: I have removed the auto open functionality from the below. Seems rather redundant in hindsight.
   @HostListener('window:resize')
   onResize(event?: Event) {
-    let arrowContainerElement = document.querySelector('.arrow-container');
-    // let sidebarElement = document.querySelector('.sidebar');
+    // let arrowContainerElement = document.querySelector('.arrow-container');
+    // // let sidebarElement = document.querySelector('.sidebar');
     let outerContainerElement = document.querySelector('.outer-container');
-    if (arrowContainerElement && outerContainerElement) {
-      let arrowContainerOffset = arrowContainerElement.getBoundingClientRect().left;
-      console.log(arrowContainerOffset);
+    if (outerContainerElement) {
+      // let arrowContainerOffset = arrowContainerElement.getBoundingClientRect().left;
+      // console.log(arrowContainerOffset);
       let outerContainerWidth = outerContainerElement.getBoundingClientRect().width;
       console.log(outerContainerWidth);
-      if (arrowContainerOffset <0 && this.isCollapsed) {
+      if (outerContainerWidth <=444 && this.isCollapsed && this.lastResizeWidth > 444) {
         this.isCollapsed = false;
         // this.expandDownwards = false;
       }
+      this.lastResizeWidth = outerContainerWidth;
+      // this.expandDownwardsWrapper = outerContainerWidth <= 444;
     }
   }
 

@@ -8,7 +8,7 @@
             </svg>
         </div> -->
         <div class = "arrow-container" [ngClass]="{ 'dark-mode': isDark }" (click)="toggleSidebar()">
-            <fa-icon [icon]="isCollapsed ? myChevronRight : myChevronLeft" class="arrow-icon"></fa-icon>
+            <fa-icon [icon]="isCollapsed ? myChevronRight : myChevronLeft" class="arrow-icon"></fa-icon> <!-- try adding the nested if conditionals you were thinking about to handle the up down icons-->
         </div>
         <nav class="sidebar" [ngClass]="{ 'collapsed': isCollapsed, 'dark-mode': isDark}">
             <ul>

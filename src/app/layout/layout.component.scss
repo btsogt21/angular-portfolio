@@ -11,8 +11,7 @@
     justify-content: center;
     align-items: center;
     width: 810px;
-    transition: background-color 0.5s ease; // ommitted due to redundancy, nothing else is altering the opacity,
-    // background-color, or color of the container. 
+    transition: background-color 0.5s ease; // removed color and opacity transitions as they were redundant.
     background-color:#f5f5f5;
     max-width: 810px;
     padding-right:20px;
@@ -71,6 +70,12 @@
         width: calc(100% - 2.4rem); //making sure the sidebar doesn't overlap the toggle button, toggle button width is 2.4
         opacity: 1;
     }
+    // &.downwards{
+
+    // }
+    // &.sideways{
+
+    // }
     // &.expand-downwards{
     //     flex-direction: column;
     //     position: absolute;
