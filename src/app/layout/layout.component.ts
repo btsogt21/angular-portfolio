@@ -1,9 +1,10 @@
-import { Component, ViewChild, ElementRef, OnInit, OnDestroy, HostListener} from '@angular/core';
+import { Component, ViewChild, ViewChildren, ElementRef, OnInit, OnDestroy, HostListener, QueryList} from '@angular/core';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { ThemeService } from '../theme.service';
 import { Subscription } from 'rxjs';
+import { gsap } from 'gsap';
 
 @Component({
   selector: 'app-layout',
@@ -11,11 +12,12 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit, OnDestroy {
+  @ViewChildren('sidebarItem') sidebarItems!:QueryList<ElementRef>;
   isCollapsed = false;
   isDark = false;
   isExpandDownwards = false;
   lastResizeWidth = 0;
-  expandDownwardsWrapper = false;
+  // expandDownwardsWrapper = false;
   private darkModeSubscription: Subscription;
   constructor(private themeService: ThemeService) { 
     this.darkModeSubscription = this.themeService.isDarkMode$.subscribe(isDarkMode => {
@@ -43,14 +45,26 @@ export class LayoutComponent implements OnInit, OnDestroy {
   toggleSidebar(){
     let outerContainerElement = document.querySelector('.outer-container');
     let outerContainerWidth = outerContainerElement ? outerContainerElement.getBoundingClientRect().width : 0;
-    if (!this.isCollapsed && outerContainerWidth <= 444){
+    const sidebarItemsArray = this.sidebarItems.toArray().map(ref => ref.nativeElement);
+    if (!this.isCollapsed && outerContainerWidth <= 444 && this.isExpandDownwards == false){ // June 18th, 7:58 PM EST: Compared to the last commit,
+      // we've gone ahead and added this.isExpandDownwards == false to the condition to make sure that this first if statement doesn't keep the
+      // if statement immediately after this one from triggering. This is because the first if statement will trigger when the sidebar is closed
+      // (that is, when this.isCollapsed == false), and the isCollapsed function could be either true or false when the next if statement
+      // is checked for.
       this.isExpandDownwards = true;
+      console.log(sidebarItemsArray);
+
+      setTimeout(() => {
+        gsap.fromTo(sidebarItemsArray, { y: '-100%', opacity: 0 }, { y: '0%', opacity: 1, stagger: 0.1, ease: 'power2.inOut', duration: 0.5 });
+      });
+      console.log('here 1')
     }
-    else if (outerContainerWidth<=444 && this.isExpandDownwards){
+    else if (outerContainerWidth <= 444 && this.isExpandDownwards){
       this.isExpandDownwards = false;
+      console.log ('here 2')
     }
     else if (!this.isCollapsed && outerContainerWidth > 444){
-      this.isExpandDownwards = false; // experiment with what happens when getting rid of this line (can the expandDownwards state be remembered as true safely?)
+      this.isExpandDownwards = false; // June 17th: Experiment with what happens when getting rid of this line (can the expandDownwards state be remembered as true safely?)
       this.isCollapsed = true;
     }
     else if (outerContainerWidth>444 && this.isCollapsed){
@@ -90,12 +104,15 @@ export class LayoutComponent implements OnInit, OnDestroy {
       // let arrowContainerOffset = arrowContainerElement.getBoundingClientRect().left;
       // console.log(arrowContainerOffset);
       let outerContainerWidth = outerContainerElement.getBoundingClientRect().width;
-      console.log(outerContainerWidth);
       if (outerContainerWidth <=444 && this.isCollapsed && this.lastResizeWidth > 444) {
         this.isCollapsed = false;
         // this.expandDownwards = false;
       }
+      else if (outerContainerWidth>444 && this.isExpandDownwards && this.lastResizeWidth <= 444){
+        this.isExpandDownwards = false;
+      }
       this.lastResizeWidth = outerContainerWidth;
+      // this.isExpandDownwards = outerContainerWidth <=444
       // this.expandDownwardsWrapper = outerContainerWidth <= 444;
     }
   }
