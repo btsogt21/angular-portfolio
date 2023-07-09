@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, OnInit, OnDestroy} from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { ThemeService } from '../theme.service';
 import { Subscription } from 'rxjs';
 
@@ -15,15 +15,6 @@ export class ZaheerGifComponent implements OnInit, OnDestroy{
       this.isDark = isDarkMode;
     });
   }
-  isCollapsed = false;
-  // openSidebar(){
-  //   this.isCollapsed = false;
-  //   this.showWindEffect(true);
-  // }
-  // closeSidebar(){
-  //   this.isCollapsed = true;
-  //   this.showWindEffect(false);
-  // }
   toggleDarkMode(): void{
     this.themeService.toggleDarkMode();
   }
