@@ -1,4 +1,6 @@
-<app-layout></app-layout>
-<router-outlet></router-outlet>
-<app-zaheer-gif></app-zaheer-gif>
+<div class = "app-container" [ngClass]="{ 'dark-mode': isDark }">
+    <app-layout></app-layout>
+    <router-outlet></router-outlet>
+    <app-zaheer-gif></app-zaheer-gif>   
+</div>
 <!-- <router-outlet></router-outlet> -->
