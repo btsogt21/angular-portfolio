@@ -97,23 +97,16 @@ export class LayoutComponent implements OnInit, OnDestroy {
   // Update: I have removed the auto open functionality from the below. Seems rather redundant in hindsight.
   @HostListener('window:resize')
   onResize(event?: Event) {
-    // let arrowContainerElement = document.querySelector('.arrow-container');
-    // // let sidebarElement = document.querySelector('.sidebar');
     let outerContainerElement = document.querySelector('.outer-container');
     if (outerContainerElement) {
-      // let arrowContainerOffset = arrowContainerElement.getBoundingClientRect().left;
-      // console.log(arrowContainerOffset);
       let outerContainerWidth = outerContainerElement.getBoundingClientRect().width;
       if (outerContainerWidth <=444 && this.isCollapsed && this.lastResizeWidth > 444) {
         this.isCollapsed = false;
-        // this.expandDownwards = false;
       }
       else if (outerContainerWidth>444 && this.isExpandDownwards && this.lastResizeWidth <= 444){
         this.isExpandDownwards = false;
       }
       this.lastResizeWidth = outerContainerWidth;
-      // this.isExpandDownwards = outerContainerWidth <=444
-      // this.expandDownwardsWrapper = outerContainerWidth <= 444;
     }
   }
 
