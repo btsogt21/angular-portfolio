@@ -12,6 +12,11 @@ body {
 }
 
 .app-container{
+    min-height: 100vh;
+    line-height: 1.1;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 340;
+    font-size:1.2em;
     background-color:#f5f5f5;
     color: #333;
     transition: opacity 0.5s ease-in-out, background-color 0.5s ease, color 0.5s ease;
@@ -31,10 +36,19 @@ body {
         transition: opacity 0.5s ease-in-out, background-color 0.5s ease, color 0.5s ease;
     }
     .arrow-icon{
+        color:#333;
         transition: opacity 0.5s ease-in-out, background-color 0.5s ease, color 0.5s ease;
         &:hover{
             color: #007bff;
         }
+    }
+    thead{
+        border-bottom: 1px solid black;
+    }
+    th, td{
+        // border: 1px solid black;
+        color: #333;
+        transition: opacity 0.5s ease-in-out, background-color 0.5s ease, color 0.5s ease, border 0.5s ease;
     }
     &.dark-mode{
         background-color: #333;
@@ -61,6 +75,14 @@ body {
             &:hover{
                 color: #007bff;
             }
+        }
+        thead{
+            border-bottom: 1px solid white;
+        }
+        th, td{
+            color: #f5f5f5;
+            // border: 1px solid white;
+            transition: opacity 0.5s ease-in-out, background-color 0.5s ease, color 0.5s ease, border 0.5s ease;
         }
     }
 }
