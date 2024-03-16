@@ -70,7 +70,7 @@
     justify-content: flex-end;
     align-items: center;
     overflow:hidden;
-    &.collapsed {
+    &.not-collapsed {
         width: calc(100% - 2.4rem); //making sure the sidebar doesn't overlap the toggle button, toggle button width is 2.4
         opacity: 1;
     }
